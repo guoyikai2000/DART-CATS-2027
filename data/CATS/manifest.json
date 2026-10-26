@@ -1,0 +1,252 @@
+{
+  "name": "CATS",
+  "full_name": "Continual ATtack Stream",
+  "version": "1.0",
+  "description": "Paired human/AI texts in nine domains; D00 keeps the original AI texts and each of D01-D08 applies one evasion attack to them.",
+  "pair_count": 8100,
+  "text_count": 16200,
+  "splits": {
+    "train": {
+      "pairs_per_domain": 500,
+      "split_field": "train"
+    },
+    "valid": {
+      "pairs_per_domain": 100,
+      "split_field": "dev"
+    },
+    "test": {
+      "pairs_per_domain": 300,
+      "split_field": "test"
+    }
+  },
+  "label_map": {
+    "HWT": 0,
+    "AI": 1
+  },
+  "positive_field": {
+    "D00": "ai_generated_text",
+    "D01-D08": "attack_text"
+  },
+  "domains": {
+    "D00": {
+      "genre": "News (CC News)",
+      "source": "MAGA-Bench",
+      "attack": "none",
+      "attack_model": null
+    },
+    "D01": {
+      "genre": "Wikipedia",
+      "source": "MAGA-Bench",
+      "attack": "contextual_lexical_substitution",
+      "attack_model": "GLM-4-9B-0414"
+    },
+    "D02": {
+      "genre": "Scientific abstracts (S2ORC)",
+      "source": "MAGA-Bench",
+      "attack": "syntactic_rewriting",
+      "attack_model": "Moonlight-16B-A3B-Instruct"
+    },
+    "D03": {
+      "genre": "ELI5 answers",
+      "source": "MDTA",
+      "attack": "discourse_restructuring",
+      "attack_model": "Ministral-3-8B-Instruct-2512"
+    },
+    "D04": {
+      "genre": "wikiHow",
+      "source": "MAGA-Bench",
+      "attack": "local_span_rewriting",
+      "attack_model": "Yi-1.5-9B-Chat"
+    },
+    "D05": {
+      "genre": "Amazon reviews",
+      "source": "MAGA-Bench",
+      "attack": "full_text_paraphrase",
+      "attack_model": "Llama-3.2-11B-Vision-Instruct (text only)"
+    },
+    "D06": {
+      "genre": "Yahoo Answers",
+      "source": "MAGA-Bench",
+      "attack": "backtranslation",
+      "attack_model": "DeepSeek (deepseek-flash API), English-Chinese-English"
+    },
+    "D07": {
+      "genre": "Trustpilot reviews",
+      "source": "MAGA-Bench",
+      "attack": "human_style_transfer",
+      "attack_model": "Gemma-3-12B-it"
+    },
+    "D08": {
+      "genre": "Finance QA",
+      "source": "MDTA",
+      "attack": "detector_feedback_paraphrase",
+      "attack_model": "Qwen3.5-9B (candidates ranked by RADAR)"
+    }
+  },
+  "content_fingerprint": "6e2e01582778587680e7552be182fb9353b2f7fa8471cb0e9445a554b27d198f",
+  "content_fingerprint_rule": "sha256 of the compact JSON object {relative path: canonical_sha256}, keys sorted; canonical_sha256 = sha256 of json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(',', ':')) + newline",
+  "files": {
+    "train/D00.json": {
+      "count": 500,
+      "bytes": 1530486,
+      "sha256": "0de7c82584576c837ae9d594d6350b2e62ac510c42901da8c631effcc0f35c40",
+      "canonical_sha256": "61ba55984485780c09d070ad3d34a084ec9381b8a7e38d81bab074cb393242c5"
+    },
+    "train/D01.json": {
+      "count": 500,
+      "bytes": 2969906,
+      "sha256": "aa5d2a2448aceccd55e98229995270a841981f1bf27805341ee8e531f0bc4f67",
+      "canonical_sha256": "f043efdeee30b3bae4d8c570a203c191d1e43dfd50b6f2bf26a9e0a4d9cc6e8d"
+    },
+    "train/D02.json": {
+      "count": 500,
+      "bytes": 1361010,
+      "sha256": "6a322533e399ba1830e174684d44cc8940c1de85a92ec344660c237862478e2b",
+      "canonical_sha256": "3c4f191b32889408c6e4bf559604758d33491e2ccd07ee653099c6b21fcc035d"
+    },
+    "train/D03.json": {
+      "count": 500,
+      "bytes": 1441013,
+      "sha256": "e845b2f4512ee88e0ed0809405634a95e4fd9308a62527f507a4f92d7abdc314",
+      "canonical_sha256": "40b30f3c77a37e93fc3e82ca9c3c5d77ea49068244edcb433874d19a4f45a56e"
+    },
+    "train/D04.json": {
+      "count": 500,
+      "bytes": 554558,
+      "sha256": "d4ef8fe41a6e03503286bbbcd09b9c733cbdf5eaa4b796d9f8dbc55ebc40a3db",
+      "canonical_sha256": "176b46ea60eadf3cc051fb3521206c52887cfe23c4944fe9461881ce7db21b0a"
+    },
+    "train/D05.json": {
+      "count": 500,
+      "bytes": 959330,
+      "sha256": "b783b2bb6d42a3c24d0e2a8c4d31ed5dc37713ce408beec57ffdf240b4d6e5ae",
+      "canonical_sha256": "e930cb0c2d21b19ba53c539a6a9023b91057823b2a34c76881b40f904df0506c"
+    },
+    "train/D06.json": {
+      "count": 500,
+      "bytes": 1119328,
+      "sha256": "13eda79c295a2d4320b6b9255517724e0a8ff080e8326be177544e6f74e4bc68",
+      "canonical_sha256": "aa60cc99e3a4c278dbbf512c5a711452ce74c95c0244e23f1b3984c01e598bcc"
+    },
+    "train/D07.json": {
+      "count": 500,
+      "bytes": 1044221,
+      "sha256": "2194e7e46dec76d1de12deb90b5047245dfd6acf5c7ae2cc316b40830d4c3373",
+      "canonical_sha256": "cbff21dbdfd664ab6f5b653f8d047f5d49ebd3af111df0e1158eb2b705527333"
+    },
+    "train/D08.json": {
+      "count": 500,
+      "bytes": 828102,
+      "sha256": "34be57d55971e0329013cff9e60f3df91bc9ba58bd2484d9c1559d51c32c71b5",
+      "canonical_sha256": "954b2d2991573a9f290ab395017cf63807b7686fc377d3b64acab65ec56013d8"
+    },
+    "valid/D00.json": {
+      "count": 100,
+      "bytes": 306909,
+      "sha256": "4104abad513e41d4b79912f0d7a1e899295926a4470de801dac4904f4c42c2b9",
+      "canonical_sha256": "fec9e0b856557b7b29b692d3cadc51941cba940ff4df4642ea870a18d833dce2"
+    },
+    "valid/D01.json": {
+      "count": 100,
+      "bytes": 607411,
+      "sha256": "c43ea2f57ce43f275aaa0e2a699d3fbada12433c85aae7d527d74bf671a4efe4",
+      "canonical_sha256": "3391798d09ea65fe8f884126bb7622c4309d2a87f4d1867c35f25b90f3df5f64"
+    },
+    "valid/D02.json": {
+      "count": 100,
+      "bytes": 284281,
+      "sha256": "51688eeec080abfdfcb3f09ada72a8c2d8d83f897db65c557fc63133c0115584",
+      "canonical_sha256": "c54d0b5b2bd09733a2dac7bf2832896a875e9b0bfeb405fb89319a26735b9a44"
+    },
+    "valid/D03.json": {
+      "count": 100,
+      "bytes": 285306,
+      "sha256": "5f51f8fc23faca9b491cde2c525e6996cd342567e0e0c402018e03b27c5c0542",
+      "canonical_sha256": "9551d428ef34ba06eef84c597000490d8673288044f9739fdc0d02437b4ad034"
+    },
+    "valid/D04.json": {
+      "count": 100,
+      "bytes": 112082,
+      "sha256": "e72c727c04d704018076823d046763a874e88b5cf47181d269b762080b9c0477",
+      "canonical_sha256": "4be96fb7b56a05a1685c1f3c6307a6c39c523e210d34d3700aa8dffee7d967b8"
+    },
+    "valid/D05.json": {
+      "count": 100,
+      "bytes": 194312,
+      "sha256": "ad97d10420707d8b4425c49cddddf2b779f93a88f182ee3c6ee31428c253e8e9",
+      "canonical_sha256": "4f268696c2ef174ce2bc272a350ab218c1c7723b50d94edc074a3b83735e9d83"
+    },
+    "valid/D06.json": {
+      "count": 100,
+      "bytes": 220304,
+      "sha256": "35784b8cb73f8be65a766a2239df44999a8aba0b5234bf6944684ace731f119a",
+      "canonical_sha256": "ca9c03883994a7109fb8faca15d1a2fc3c1e0e35530968c442bd6d4de1718454"
+    },
+    "valid/D07.json": {
+      "count": 100,
+      "bytes": 219110,
+      "sha256": "5523a575e268f1f11a2edb94aeb68a371d4129ff1cd580ecb8f87113513f6fca",
+      "canonical_sha256": "6a27d642146cc26fc1f69752a44175aaf9d07c5a42e801dbf00abd81f969ab20"
+    },
+    "valid/D08.json": {
+      "count": 100,
+      "bytes": 180662,
+      "sha256": "edeee8bada14fb5427d0884ef3185c45dafa4c821601a9692b2c05724742a103",
+      "canonical_sha256": "c08a5cb3f2b617f8d593c7b586948fb527498c1024e702d66852de657e4cd63e"
+    },
+    "test/D00.json": {
+      "count": 300,
+      "bytes": 1000006,
+      "sha256": "1c3d0f8f1808adc4aa26f86ae76a12959fa2953962c4fae86a11b73b4b87afb4",
+      "canonical_sha256": "f890f825a6994590ce7841c9fd578245f5b1cda88e5d633ad44e958d89a87f5f"
+    },
+    "test/D01.json": {
+      "count": 300,
+      "bytes": 1802830,
+      "sha256": "8afc50b1734aee9165366cfda0cd603e4422a06391c98dce93768fd8344a4f06",
+      "canonical_sha256": "7d1774e0a1c7540ad5806abe6b38102f43521e7690a205fcace77b372988a6a0"
+    },
+    "test/D02.json": {
+      "count": 300,
+      "bytes": 819785,
+      "sha256": "ded3e932df11c27f7dc64b073a346d587098ba924587369d74e7c1527313975e",
+      "canonical_sha256": "0a7793810e289c5b03d59313e48ea74adcaf5155a6add42772cdd6cddfcb392d"
+    },
+    "test/D03.json": {
+      "count": 300,
+      "bytes": 823813,
+      "sha256": "c76303a88c8d823bc1dafd239975bef372fd8ec40e60457065c4519def47e909",
+      "canonical_sha256": "2dc15fdd6bb09bcca97f54a841e38f9330ae8080bc7926871253e371a3d2447d"
+    },
+    "test/D04.json": {
+      "count": 300,
+      "bytes": 334643,
+      "sha256": "44e3fccfc6da0f24d2207b307cf46383b3ef919dd0c2f6f8715555ca8808ccf7",
+      "canonical_sha256": "1c3ce7c83d897a02a0eea5a878e80452a3e97e7e0826503e806af9f794ac72a7"
+    },
+    "test/D05.json": {
+      "count": 300,
+      "bytes": 605093,
+      "sha256": "d0991388f2a90835f36cc17dbd60f1b67c5c1fef1ccbb33d63d1636c63ceda64",
+      "canonical_sha256": "4ba612d512a1b12cd94c449a4a19c174754bc48a1766e517e26180aa9d7a0a2f"
+    },
+    "test/D06.json": {
+      "count": 300,
+      "bytes": 646825,
+      "sha256": "f0ec39e969a8debef7c95713f80d4b7390dac6e37a1b2339d754131b4cceb682",
+      "canonical_sha256": "1a41c7fade8764e66fdd437c8ed273bd6f448c084b27f10abd6c3bb155d6b544"
+    },
+    "test/D07.json": {
+      "count": 300,
+      "bytes": 623153,
+      "sha256": "f78683314d336a38d08d901d0b032876cc88633e4bf2c280a63813928138514d",
+      "canonical_sha256": "16f681207bf477fea82babcc7c6775306a4a6774110487ffba95374dfc94a5be"
+    },
+    "test/D08.json": {
+      "count": 300,
+      "bytes": 561980,
+      "sha256": "22a0880983bdadfe04ce44477f2f8100c04edbd9937fe4972742a0964569bf89",
+      "canonical_sha256": "b030ab10ae6dc214725881bc03b7e0763dbf1dbfae361e43c677b77f0616dfeb"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Lastde with GPT-J-6B (embed size 3, epsilon 10T, tau' 5; see lastde_short.py for texts below 8 tokens).
+# Native environment (requirements-native.txt).
+method: lastde
+data_dir: data/CATS
+output_dir: outputs/fixed/lastde
+models:
+  scoring: models/gpt-j-6b
+max_length: 2048
+device: cuda:0
+third_party_dir: third_party/Lastde_Detector/py_scripts/baselines
+seed: 2026

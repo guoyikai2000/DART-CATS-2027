@@ -1,0 +1,6 @@
+# Table 3, "w/o Replay": no replay (beta = 0); CE + hinge in the second epoch and the interpolation are kept.
+# No memory is written, so this run needs neither the analyst nor the writer.
+base: ../dart.yaml
+output_dir: outputs/dart_ablations/no_replay
+method:
+  beta: 0.0

@@ -1,0 +1,12 @@
+# Environment used for Fast-DetectGPT, Lastde and Binoculars (Python 3.11, CUDA 12.1), as in the authors' code.
+torch==2.1.0
+transformers==4.46.3
+accelerate==0.34.2
+datasets==4.4.1
+tokenizers==0.20.3
+safetensors==0.8.0
+huggingface_hub==0.36.2
+numpy==1.26.4
+scikit-learn==1.5.0
+PyYAML==6.0.3
+tqdm==4.66.4

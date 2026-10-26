@@ -1,0 +1,5 @@
+# Figure 5, R = 1 revision round (default 2). R = 0 is ablations/no_verification.yaml.
+base: ../dart.yaml
+output_dir: outputs/dart_sensitivity/revisions_1
+method:
+  revisions: 1

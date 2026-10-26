@@ -1,0 +1,11 @@
+# PseudoReplay: frozen Ministral writer, 5-shot label-conditioned prompts, temperature 1.0;
+# 200 synthetic texts per stage added to the current data.
+base: _shell.yaml
+method_name: pseudo
+output_dir: outputs/pseudo
+method:
+  replay_per_stage: 200
+  pseudo_sample_memory: 200
+  num_shots: 5
+  generation_temperature: 1.0
+  generator: base

@@ -1,0 +1,19 @@
+# Main environment of the paper (Python 3.11, CUDA 12.8): DART, continual baselines, RADAR / ImBD / TASTE / OSM-Det.
+# Install torch for your CUDA first if needed, e.g.  pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cu128
+torch==2.9.1
+transformers==5.8.0
+peft==0.18.1
+accelerate==1.11.0
+datasets==4.0.0
+tokenizers==0.22.2
+safetensors==0.8.0
+sentencepiece==0.2.2
+mistral_common==1.11.7
+tiktoken==0.14.0
+protobuf==7.35.1
+huggingface_hub==1.28.0
+numpy==2.3.5
+scipy==1.17.1
+scikit-learn==1.9.0
+PyYAML==6.0.3
+tqdm==4.70.0

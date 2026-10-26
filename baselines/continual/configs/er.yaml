@@ -1,0 +1,6 @@
+# ER: four real pairs per past domain added to the current data.
+base: _shell.yaml
+method_name: er
+output_dir: outputs/er
+method:
+  replay_pairs: 4

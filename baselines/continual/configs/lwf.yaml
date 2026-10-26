@@ -1,0 +1,7 @@
+# LwF: temperature 2; distillation with weight 0.5 added to the cross-entropy; teacher = previous stage.
+base: _shell.yaml
+method_name: lwf
+output_dir: outputs/lwf
+method:
+  lwf_temperature: 2.0
+  lwf_alpha: 0.5

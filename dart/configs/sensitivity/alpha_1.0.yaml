@@ -1,0 +1,5 @@
+# Interpolation weight alpha = 1.0 (default 0.5; not shown in Figure 5).
+base: ../dart.yaml
+output_dir: outputs/dart_sensitivity/alpha_1.0
+method:
+  merge_alpha: 1.0

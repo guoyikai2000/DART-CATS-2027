@@ -1,0 +1,15 @@
+# SSR: frozen Ministral writer, 2-shot prompts, temperature 0.9; 400 candidates relabeled by the detector
+# and reduced to 200 texts by SimCSE embeddings and k-means with 20 clusters.
+base: _shell.yaml
+method_name: ssr
+output_dir: outputs/ssr
+method:
+  replay_per_stage: 200
+  pseudo_sample_memory: 200
+  num_shots: 2
+  generation_temperature: 0.9
+  n_clusters: 20
+  candidate_factor: 2.0
+  generator: base
+  select_embed: simcse
+  simcse_path: models/sup-simcse-bert-base-uncased

@@ -1,0 +1,7 @@
+# Table 3, "w/o Scoring, Validation & Revision" (= R = 0 in Figure 5): the initial memory of the analyst is
+# frozen as is; no validation texts, no Cov/Prec/F, no revision, no SimCSE. Hard selection is kept.
+base: ../dart.yaml
+output_dir: outputs/dart_ablations/no_verification
+method:
+  verification: false
+  revisions: 0

@@ -1,0 +1,7 @@
+# O-LoRA: orthogonality weight 0.5, no l2 term; the LoRA module is merged after each stage and a new one added.
+base: _shell.yaml
+method_name: olora
+output_dir: outputs/olora
+method:
+  orthogonal_lambda: 0.5
+  l2_lambda: 0.0

@@ -1,0 +1,10 @@
+# OSM-Det (Longformer-base-4096 detector), fp32, 4096 tokens; P(class 1 = AI).
+method: osm_det
+data_dir: data/CATS
+output_dir: outputs/fixed/osm_det
+models:
+  detector: models/OSM-Det
+max_length: 4096
+batch_size: 8
+device: cuda:0
+seed: 2026

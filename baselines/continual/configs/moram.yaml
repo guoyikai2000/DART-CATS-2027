@@ -1,0 +1,10 @@
+# MoRAM: rank 8, top-k 8, temperature 0.03, scaling 32 (replaces the LoRA settings of the shell).
+base: _shell.yaml
+method_name: moram
+output_dir: outputs/moram
+method:
+  moram_rank: 8
+  moram_topk: 8
+  moram_temperature: 0.03
+  moram_alpha: 32.0
+  moram_dropout: 0.0

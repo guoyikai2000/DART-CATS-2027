@@ -1,0 +1,11 @@
+# ImBD: the released scoring adapter on GPT-Neo-2.7B, fp32, 2048 tokens; analytic Style-CPC criterion.
+method: imbd
+data_dir: data/CATS
+output_dir: outputs/fixed/imbd
+models:
+  detector: models/ImBD           # adapter + tokenizer
+  base: models/gpt-neo-2.7B
+max_length: 2048
+batch_size: 1
+device: cuda:0
+seed: 2026

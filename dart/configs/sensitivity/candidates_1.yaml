@@ -1,0 +1,5 @@
+# Figure 5, 1 candidate(s) per anchor (default 2).
+base: ../dart.yaml
+output_dir: outputs/dart_sensitivity/candidates_1
+method:
+  candidates: 1

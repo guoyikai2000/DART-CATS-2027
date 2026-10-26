@@ -1,0 +1,6 @@
+# Table 3, "w/o Real Human Anchors": the human side of every replay pair is a human-like continuation of
+# the same opening written by the same frozen writer (dart/synthetic_human.py).
+base: ../dart.yaml
+output_dir: outputs/dart_ablations/synthetic_human
+method:
+  replay_human: synthetic

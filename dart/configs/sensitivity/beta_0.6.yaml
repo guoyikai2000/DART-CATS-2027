@@ -1,0 +1,5 @@
+# Figure 5, replay fraction beta = 0.6 (default 0.4).
+base: ../dart.yaml
+output_dir: outputs/dart_sensitivity/beta_0.6
+method:
+  beta: 0.6

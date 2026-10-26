@@ -1,0 +1,8 @@
+# EWC: lambda = 1e4; Fisher information from 100 texts (batch size 1).
+base: _shell.yaml
+method_name: ewc
+output_dir: outputs/ewc
+method:
+  ewc_lambda: 10000.0
+  fisher_samples: 100
+  fisher_batch_size: 1

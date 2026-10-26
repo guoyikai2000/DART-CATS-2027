@@ -1,0 +1,22 @@
+# Shared by all continual baselines and DART (Section 5.1). Relative paths are resolved against the
+# repository root; the order is chosen on the command line (--order O0|O1|O2|O3).
+protocol: paper
+data_dir: data/CATS
+model_name_or_path: models/Ministral-3-8B-Instruct-2512-BF16
+shell:
+  seed: 2026
+  max_length: 512
+  epochs: 2
+  learning_rate: 0.0002
+  train_batch_size: 8
+  eval_batch_size: 8
+  gradient_accumulation_steps: 1
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  lora_rank: 24
+  lora_alpha: 48
+  lora_dropout: 0.05
+  lora_targets: gate_proj,up_proj,down_proj
+  precision: bf16
+  target_fpr: 0.01
+  dataloader_workers: 4

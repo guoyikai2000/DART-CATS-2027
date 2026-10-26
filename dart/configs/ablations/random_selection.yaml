@@ -1,0 +1,6 @@
+# Table 3, "w/o Hard Selection": two candidates per anchor as before, but a valid candidate is chosen
+# uniformly at random instead of by the detector.
+base: ../dart.yaml
+output_dir: outputs/dart_ablations/random_selection
+method:
+  selection: random

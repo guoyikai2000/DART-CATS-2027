@@ -1,0 +1,82 @@
+# DART, main setting of the paper (Table 2). Choose the domain order on the command line:
+#   python dart/run_dart.py --config dart/configs/dart.yaml --order O1
+# Relative paths are resolved against the repository root.
+method_name: dart
+protocol: paper                  # the shell below must equal the paper's shared settings
+data_dir: data/CATS
+model_name_or_path: models/Ministral-3-8B-Instruct-2512-BF16
+output_dir: outputs/dart         # results go to <output_dir>/<order>/<tag>_<time>/
+
+shell:                           # shared by all continual methods (Section 5.1)
+  seed: 2026                     # stage i uses seed 2026 + i
+  max_length: 512
+  epochs: 2
+  learning_rate: 0.0002
+  train_batch_size: 8
+  eval_batch_size: 8
+  gradient_accumulation_steps: 1
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  lora_rank: 24
+  lora_alpha: 48
+  lora_dropout: 0.05
+  lora_targets: gate_proj,up_proj,down_proj
+  precision: bf16
+  target_fpr: 0.01
+  dataloader_workers: 4
+
+method:
+  # anchored replay with hard selection (Section 4.3)
+  beta: 0.4                      # fraction of pairs whose AI side is replaced (200 of 500 pairs)
+  candidates: 2                  # |C(h)|, candidates per anchor
+  selection: hardest             # hardest: keep the candidate with the lowest detector score | random
+  replay_human: real             # real: the anchor's human text | synthetic (ablation)
+  opening_words: 30              # m, words of the human opening given to the writer
+  mirror_overshoot: 1.15         # target length = visible human words x max(r_k, 1) x 1.15, then cut
+  mirror_rewrites: 2             # rewrites with the same pattern after a failed check
+  mirror_switch_pattern: 1       # then one write with another pattern drawn by w
+  length_check: lower            # accept 0.8N-3N words (the text is cut to the anchor length anyway)
+  # training under a fixed budget (Section 4.4)
+  lambda: 1.0                    # weight of the pairwise hinge
+  gamma: 4.0                     # hinge margin
+  merge_alpha: 0.5               # alpha of Eq. (8); not applied at the first stage
+  # verified difference memory (Section 4.2)
+  observe_hard: 25               # n hard observation pairs
+  observe_random: 25             # n random observation pairs
+  hard_ai: 100                   # |A_t^hard|
+  knn_k: 5                       # kappa
+  mirrors_per_anchor: 2          # validation texts per observation pair (100 per version)
+  revisions: 2                   # R revision rounds
+  revision_cases: 10             # worst-reproduced cases shown per revision
+  verification: true             # false: keep the initial memory (no Cov/Prec, no revision)
+  encoder_path: models/sup-simcse-bert-base-uncased   # phi, frozen sentence encoder
+  workers: 16                    # parallel writer / analyst requests
+  analyst:
+    backend: api                 # api: OpenAI-compatible endpoint | queue: offline server + relay
+    model: gpt-6-luna
+    temperature: 0.2
+    json_retries: 2
+    max_resubmits: 20
+    max_tokens_observe: 12000
+    max_tokens_revise: 8000
+    max_tokens_field: max_tokens # some endpoints expect max_completion_tokens
+    api_key_env: OPENAI_API_KEY  # backend api: the key is read from this environment variable
+    base_url: null               # backend api: null -> $OPENAI_BASE_URL or https://api.openai.com/v1
+    concurrency: 8
+    timeout: 300
+    max_wait: 1800
+    queue_root: outputs/analyst_queue   # backend queue only
+  writer:                        # G, the frozen base checkpoint of the detector backbone
+    temperature: 0.9
+    max_new_tokens: 1024
+    batch_size: 16
+    device: cuda                 # e.g. cuda:1 to place the writer on a second GPU
+  smoke:                         # --smoke: first two stages on tiny subsets
+    train_pairs: 24
+    eval_rows: 20
+    observe_hard: 3
+    observe_random: 3
+    hard_ai: 6
+    knn_k: 3
+    mirrors_per_anchor: 1
+    revision_cases: 3

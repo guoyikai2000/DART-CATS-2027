@@ -1,0 +1,13 @@
+# Binoculars: Falcon-7B observer and Falcon-7B-Instruct performer (bf16, 512 tokens), one model per GPU;
+# the score is negated so that higher means AI. Native environment (requirements-native.txt).
+method: binoculars
+data_dir: data/CATS
+output_dir: outputs/fixed/binoculars
+models:
+  observer: models/falcon-7b
+  performer: models/falcon-7b-instruct
+max_length: 512
+device: cuda:0
+performer_device: cuda:1        # cuda:0 also works on a GPU with enough memory
+third_party_dir: third_party/Lastde_Detector/py_scripts/baselines
+seed: 2026

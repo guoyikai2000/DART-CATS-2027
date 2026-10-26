@@ -1,0 +1,11 @@
+# TASTE: the released multilingual-BERT detector (detector_ep3.pt), fp16 autocast, 512 tokens; P(class 1 = AI).
+method: taste
+data_dir: data/CATS
+output_dir: outputs/fixed/taste
+models:
+  detector: models/TASTE/detector  # config.json, tokenizer files and detector_ep3.pt
+checkpoint: detector_ep3.pt
+max_length: 512
+batch_size: 8
+device: cuda:0
+seed: 2026

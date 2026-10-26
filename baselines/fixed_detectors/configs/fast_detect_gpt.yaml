@@ -1,0 +1,10 @@
+# Fast-DetectGPT (analytic), GPT-J-6B as scoring and reference model. Native environment (requirements-native.txt).
+method: fast_detect_gpt
+data_dir: data/CATS
+output_dir: outputs/fixed/fast_detect_gpt
+models:
+  scoring: models/gpt-j-6b
+max_length: 2048
+device: cuda:0
+third_party_dir: third_party/Lastde_Detector/py_scripts/baselines
+seed: 2026
